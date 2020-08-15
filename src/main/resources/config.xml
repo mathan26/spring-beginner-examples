@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:annotation-config/>
+
+    <bean id="sim" class="com.github.mathan26.springcore.examples.ioc.Vodafone"/>
+
+    <!--    SETTER INJECTION-->
+    <bean id="student1" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.Student">
+        <property name="studentName" value="Mathan"/>
+        <property name="id" value="1"/>
+    </bean>
+
+    <bean id="student2" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.Student">
+        <property name="studentName" value="Vishal"/>
+        <property name="id" value="2"/>
+    </bean>
+
+    <!--    CONSTRUCTOR INJECTION-->
+    <bean id="student3" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.Student">
+        <constructor-arg name="id" value="3" type="int"/>
+        <constructor-arg name="studentName" value="Raghav" type="java.lang.String"/>
+    </bean>
+
+    <bean id="student4" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.Student">
+        <constructor-arg name="id" value="4"/>
+        <constructor-arg name="studentName" value="Sambath"/>
+    </bean>
+
+    <!--    SEPARATE MATHCHEET OBJECT CREATED FOR ANOTHERSTUDENT-->
+    <!--    To over only one bean tag should be used globally then ref the bean inside the another bean-->
+
+    <bean id="mathCheat" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.MathCheat"/>
+    <bean id="scienceCheat" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.ScienceCheat"/>
+
+    <bean id="student5" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.Student">
+        <constructor-arg name="id" value="5"/>
+        <constructor-arg name="studentName" value="student5"/>
+        <property name="mathCheat" ref="mathCheat">
+            <!--            <bean class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.MathCheat"/>-->
+        </property>
+    </bean>
+
+
+    <bean id="student6" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.AnotherStudent">
+        <constructor-arg name="id" value="6"/>
+        <constructor-arg name="studentName" value="student6"/>
+        <property name="mathCheat" ref="mathCheat">
+            <!--            <bean class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.MathCheat"/>-->
+        </property>
+    </bean>
+
+    <bean id="cheat" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.MathCheat"/>
+
+    <bean id="specialstudent" class="com.github.mathan26.springcore.examples.di.setter_and_constrctor_injection.Student">
+        <constructor-arg name="id" value="777"/>
+        <constructor-arg name="studentName" value="specialstudent"/>
+        <property name="mathCheat" ref="cheat">
+        </property>
+    </bean>
+
+
+
+<!--    AUTOWIRED-->
+
+    <bean id="humanHeart" class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Heart">
+        <property name="nameOfAnimal" value="Human"/>
+        <property name="noOfHeart" value="1" />
+    </bean>
+    <bean id="alienHeart" class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Heart">
+        <property name="nameOfAnimal" value="Alien"/>
+        <property name="noOfHeart" value="2" />
+    </bean>
+
+<!--    byName-->
+    <bean id="human"
+          class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Human"
+            autowire="byName">
+<!--        <property name="heart" ref="heartObject"/> How to make spring to auto configure -->
+    </bean>
+
+    <!--    byType-->
+    <bean id="humanObject"
+          class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Human"
+          autowire="byType">
+    </bean>
+
+    <!--    constrctor-->
+    <bean id="humanObject2"
+          class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Human"
+          autowire="constructor">
+    </bean>
+
+    <bean id="alien" class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Alien"/>
+</beans>
