@@ -11,6 +11,9 @@
 
 
     <context:annotation-config/>
+    <context:property-placeholder location="classpath:student-info.properties"/>
+    
+    <context:component-scan base-package="com.github.mathan26.springcore.examples.spring_core_annotation"/>
 
     <bean id="sim" class="com.github.mathan26.springcore.examples.ioc.Vodafone"/>
 
@@ -101,4 +104,20 @@
     </bean>
 
     <bean id="alien" class="com.github.mathan26.springcore.examples.di.autowired_and_qualifier.Alien"/>
+    
+    
+<!--    INJECTING LITERAL VALUES-->
+    <bean id="obj1" class="com.github.mathan26.springcore.examples.injectingliteral.Student">
+       <!-- <property name="name" value="Mathankumar"/>
+        <property name="interestCourse" value="Java"/>
+        <property name="hobby" value="Playing Cricket"/>-->
+        <property name="name" value="${student.name}"/>
+      <property name="interestCourse" value="${student.interestCourse}"/>
+      <property name="hobby" value="${student.hobby}"/>
+    </bean>
+
+    <bean id="obj2" class="com.github.mathan26.springcore.examples.injectingliteral.AnnotationExample">
+    </bean>
+
+    
 </beans>

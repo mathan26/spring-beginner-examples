@@ -15,12 +15,12 @@ public class Mobile {
 
 
 		// If you want to use Airtel sim
-		Sim sim= new Airtel();
-		sim.call();
-
-		//Now you don't want to use Airtel change to Vodafone
-		Sim sim1=new Vodafone();
-		sim1.call();
+//		Sim sim= new Airtel();
+//		sim.call();
+//
+//		//Now you don't want to use Airtel change to Vodafone
+//		Sim sim1=new Vodafone();
+//		sim1.call();
 
 		//Now you want to use Jio
 		// But without touching the Source code...
@@ -36,7 +36,7 @@ public class Mobile {
 				// 1. BeanFactory   - Interface
 				// 2. ApplicationContext - Interface  ( with More functionality than BeanFactory)
 				// ======> Implementations
-						// 1. ClassPathXMLContex
+						// 1. ClassPathXMLContext
 
 		System.out.println("\n\n\n");
 		System.out.println("#################USING SPRING################");

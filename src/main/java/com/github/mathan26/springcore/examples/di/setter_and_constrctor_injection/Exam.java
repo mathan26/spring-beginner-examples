@@ -31,9 +31,7 @@ public class Exam {
         AnotherStudent student6 = context.getBean("student6",AnotherStudent.class);
         student6.cheating();
 
-        //We
         Student specialstudent = context.getBean("specialstudent",Student.class);
         specialstudent.cheating();
-
     }
 }
